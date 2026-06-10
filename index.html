@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LOTUS San Sebastian Display</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    background:#000;
+    width:100vw;
+    height:100vh;
+}
+
+.menu{
+    width:100vw;
+    height:100vh;
+    object-fit:cover;
+    display:block;
+}
+
+#logoPopup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,0.75);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:all 1s ease;
+    z-index:9999;
+}
+
+#logoPopup.show{
+    opacity:1;
+    visibility:visible;
+}
+
+#logoPopup img{
+    width:650px;
+    max-width:85%;
+
+    filter:
+    drop-shadow(0 0 20px #FFD700)
+    drop-shadow(0 0 60px #FFD700);
+
+    animation:logoAnimation 5s ease forwards;
+}
+
+@keyframes logoAnimation{
+
+    0%{
+        transform:scale(0.7);
+        opacity:0;
+    }
+
+    20%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    80%{
+        transform:scale(1.05);
+        opacity:1;
+    }
+
+    100%{
+        transform:scale(0.95);
+        opacity:0;
+    }
+}
+
+.brand-text{
+    position:absolute;
+    bottom:120px;
+    width:100%;
+    text-align:center;
+
+    color:#FFD700;
+    font-size:42px;
+    font-family:Georgia, serif;
+    letter-spacing:4px;
+
+    text-shadow:
+    0 0 10px #FFD700,
+    0 0 30px #FFD700;
+}
+
+</style>
+</head>
+
+<body>
+
+<img src="menu-main.png" class="menu" alt="Menu">
+
+<div id="logoPopup">
+
+    <div style="text-align:center;">
+
+        <img src="logo-cinematic-gold.png" alt="LOTUS Logo">
+
+        <div class="brand-text">
+            LOTUS SAN SEBASTIAN
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const logo = document.getElementById("logoPopup");
+
+function showLogo(){
+
+    logo.classList.add("show");
+
+    setTimeout(()=>{
+        logo.classList.remove("show");
+    },5000);
+
+}
+
+/* نمایش اولیه بعد از 5 ثانیه */
+setTimeout(showLogo,5000);
+
+/* هر 5 دقیقه یکبار */
+setInterval(showLogo,300000);
+
+</script>
+
+</body>
+</html>
